@@ -1,0 +1,70 @@
+@startuml
+
+Interface Component {
+    + getPath()
+    + getName()
+    + isComposite()
+}
+
+Class File implements Component {
+    + getPath()
+    + getName()
+    + isComposite()
+}
+
+Class Directory implements Component {
+    + getPath()
+    + getName()
+    + isComposite()
+    + add(Component)
+    + remove(Component)
+    + getChildren()
+}
+
+Interface Command {
+    + execute()
+}
+
+Class LsCommand implements Command {
+    + execute()
+}
+
+Class MkdirCommand implements Command {
+    + execute()
+}
+
+Class CdCommand implements Command {
+    + execute()
+}
+
+Class TouchCommand implements Command {
+    + execute()
+}
+
+Class RmCommand implements Command {
+    + execute()
+}
+
+Class PwdCommand implements Command {
+    + execute()
+}
+
+Interface FileSystem {
+    + getRoot()
+    + getCurrent()
+    + setCurrent()
+    + executeCommand()
+}
+
+Class MyFileSystem implements FileSystem {
+    + getRoot()
+    + getCurrent()
+    + setCurrent()
+    + executeCommand()
+}
+
+Component *-- Directory
+MyFileSystem *-- Component
+MyFileSystem *-- Command
+
+@enduml
