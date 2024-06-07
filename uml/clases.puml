@@ -25,30 +25,6 @@ Interface Command {
     + execute()
 }
 
-Class LsCommand implements Command {
-    + execute()
-}
-
-Class MkdirCommand implements Command {
-    + execute()
-}
-
-Class CdCommand implements Command {
-    + execute()
-}
-
-Class TouchCommand implements Command {
-    + execute()
-}
-
-Class RmCommand implements Command {
-    + execute()
-}
-
-Class PwdCommand implements Command {
-    + execute()
-}
-
 Interface FileSystem {
     + getRoot()
     + getCurrent()
@@ -63,8 +39,13 @@ Class MyFileSystem implements FileSystem {
     + executeCommand()
 }
 
+Interface CommandBuilder {
+    + build()
+}
+
 Component *-- Directory
 MyFileSystem *-- Component
-MyFileSystem *-- Command
+MyFileSystem *-- CommandBuilder
+CommandBuilder *-- Command
 
 @enduml
